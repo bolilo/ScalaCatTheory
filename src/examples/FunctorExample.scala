@@ -11,8 +11,7 @@ object FunctorExample {
 
     val v: Maybe[Int] = Just(99)
 
-    println(v.functorMap[Int]((x: Int) => x + 11)) //prints Just(110)
-
+    println(v.functorMap((x: Int) => x + 11)) //prints Just(110)
 
     println(Just(9).functorMap((x: Int) => x + 11)) //prints Just(20) 
 

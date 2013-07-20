@@ -4,10 +4,7 @@ import main.com.cattheory.typeclasses.types.Types.Functor
 
 trait FunctorLikeList extends Functor[List] {
 
-  def functorMap[A, B](f: A => B): List[A] => List[B] = {
+  override def functorMap[A, B](f: A => B)(context: List[A]): List[B] = context.map(f)
 
-    def fun(x: List[A]): List[B] = x.map(f)
-    fun
-  }
 }
   
