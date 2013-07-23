@@ -24,14 +24,14 @@ class FunctorTest extends FunSuite {
 
   test("identity law for Maybe") {
     assert(Just(99).functorMap(identity) === Just(99))
-    assert(None.functorMap(identity) === None)
+    assert(HNothing.functorMap(identity) === HNothing)
   }
 
   test("composition law for Maybe") {
     val j = Just(10)
     assert(j.functorMap(f1).functorMap(f2) === j.functorMap(f1AndThenf2))
 
-    val n = None
+    val n = HNothing
     assert(n.functorMap(f1).functorMap(f2) === n.functorMap(f1AndThenf2))
   }
 

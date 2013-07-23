@@ -13,7 +13,7 @@ object Types {
   }
 
   //This special case is required because Maybe has 2 subclasses and there is no
-  //implicit opbject for Functor[Just] 
+  //implicit object for Functor[Just] 
 
   implicit def toFunctor[X](m: Maybe[X])(implicit ev: Functor[Maybe]) = new {
     def functorMap[Y](f: X => Y): Maybe[Y] = ev.functorMap(f)(m)
@@ -24,7 +24,6 @@ object Types {
     def <*>[A, B](tf: T[A => B])(context: T[A]): T[B]
   }
 
-
   implicit def toApplicative[X, Y, T[X]](fun: T[X => Y])(implicit ev: ApplicativeLike[T]) = new {
     def <*> = ev.<*>(fun)_
   }
@@ -32,5 +31,7 @@ object Types {
   implicit def toApplicative[X, Y](fun: Maybe[X => Y])(implicit ev: ApplicativeLike[Maybe]) = new {
     def <*> = ev.<*>(fun)_
   }
+
+  private def pure[X, T[_]](v: X)(implicit ev: ApplicativeLike[T]) = ev.pure(v)
 
 }

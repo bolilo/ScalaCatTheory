@@ -5,6 +5,8 @@ import main.com.cattheory.typeclasses.FunctorLikeList
 
 package object typeclasses {
 
+  //http:stackoverflow.com/questions/14633231/scala-self-type-annotation-vs-with-mix-in
+  
   //implicit object FunctorMaybe extends FunctorLikeMaybe
 
   //implicit object FunctorList extends FunctorLikeList

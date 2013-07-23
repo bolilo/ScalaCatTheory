@@ -10,6 +10,6 @@ trait ApplicativeLikeMaybe extends ApplicativeLike[Maybe] {
 
   override def <*>[A, B](fun: Maybe[A => B])(context: Maybe[A]): Maybe[B] = fun match {
     case Just(f) => functorMap(f)(context)
-    case None => None
+    case HNothing => HNothing
   }
 }
